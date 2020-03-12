@@ -5,6 +5,40 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Хранилище Orion2019Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AcessPoint">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ComputerID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="25" />
+          <Property Name="Comment" Type="varchar" MaxLength="255" />
+          <Property Name="GIndex" Type="int" Nullable="false" />
+          <Property Name="Gtype" Type="int" Nullable="false" />
+          <Property Name="InKeyID" Type="int" />
+          <Property Name="InDuration" Type="int" />
+          <Property Name="InCommand" Type="int" />
+          <Property Name="OutKeyID" Type="int" />
+          <Property Name="OutDuration" Type="int" />
+          <Property Name="OutCommand" Type="int" />
+          <Property Name="InKeyID2" Type="int" />
+          <Property Name="InDuration2" Type="int" />
+          <Property Name="InCommand2" Type="int" />
+          <Property Name="OutKeyID2" Type="int" />
+          <Property Name="OutDuration2" Type="int" />
+          <Property Name="OutCommand2" Type="int" />
+          <Property Name="Config" Type="int" />
+          <Property Name="IndexZone1" Type="int" />
+          <Property Name="IndexZone2" Type="int" />
+          <Property Name="IndexZone3" Type="int" />
+          <Property Name="IndexZone4" Type="int" />
+          <Property Name="WorkTimeZone1" Type="int" />
+          <Property Name="WorkTimeZone2" Type="int" />
+          <Property Name="WorkTimeZone3" Type="int" />
+          <Property Name="WorkTimeZone4" Type="int" />
+          <Property Name="Mode" Type="int" />
+          <Property Name="WeightTerminalID" Type="int" />
+        </EntityType>
         <EntityType Name="PCompany">
           <Key>
             <PropertyRef Name="ID" />
@@ -118,6 +152,7 @@
           <Property Name="IdComment" Type="int" />
         </EntityType>
         <EntityContainer Name="Хранилище Orion2019ModelContainer">
+          <EntitySet Name="AcessPoint" EntityType="Self.AcessPoint" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PCompany" EntityType="Self.PCompany" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PDivision" EntityType="Self.PDivision" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pList" EntityType="Self.pList" Schema="dbo" store:Type="Tables" />
@@ -232,6 +267,7 @@
           <EntitySet Name="pList" EntityType="Self.pList" />
           <EntitySet Name="pLogData" EntityType="Self.pLogData" />
           <EntitySet Name="PCompany" EntityType="Orion2019Model.PCompany" />
+          <EntitySet Name="AcessPoint" EntityType="Orion2019Model.AcessPoint" />
         </EntityContainer>
         <EntityType Name="PCompany">
           <Key>
@@ -244,6 +280,40 @@
           <Property Name="Id_Number_Company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="GUID_1C" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="IsGuest" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AcessPoint">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ComputerID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Comment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GIndex" Type="Int32" Nullable="false" />
+          <Property Name="Gtype" Type="Int32" Nullable="false" />
+          <Property Name="InKeyID" Type="Int32" />
+          <Property Name="InDuration" Type="Int32" />
+          <Property Name="InCommand" Type="Int32" />
+          <Property Name="OutKeyID" Type="Int32" />
+          <Property Name="OutDuration" Type="Int32" />
+          <Property Name="OutCommand" Type="Int32" />
+          <Property Name="InKeyID2" Type="Int32" />
+          <Property Name="InDuration2" Type="Int32" />
+          <Property Name="InCommand2" Type="Int32" />
+          <Property Name="OutKeyID2" Type="Int32" />
+          <Property Name="OutDuration2" Type="Int32" />
+          <Property Name="OutCommand2" Type="Int32" />
+          <Property Name="Config" Type="Int32" />
+          <Property Name="IndexZone1" Type="Int32" />
+          <Property Name="IndexZone2" Type="Int32" />
+          <Property Name="IndexZone3" Type="Int32" />
+          <Property Name="IndexZone4" Type="Int32" />
+          <Property Name="WorkTimeZone1" Type="Int32" />
+          <Property Name="WorkTimeZone2" Type="Int32" />
+          <Property Name="WorkTimeZone3" Type="Int32" />
+          <Property Name="WorkTimeZone4" Type="Int32" />
+          <Property Name="Mode" Type="Int32" />
+          <Property Name="WeightTerminalID" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -363,6 +433,41 @@
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcessPoint">
+            <EntityTypeMapping TypeName="Orion2019Model.AcessPoint">
+              <MappingFragment StoreEntitySet="AcessPoint">
+                <ScalarProperty Name="WeightTerminalID" ColumnName="WeightTerminalID" />
+                <ScalarProperty Name="Mode" ColumnName="Mode" />
+                <ScalarProperty Name="WorkTimeZone4" ColumnName="WorkTimeZone4" />
+                <ScalarProperty Name="WorkTimeZone3" ColumnName="WorkTimeZone3" />
+                <ScalarProperty Name="WorkTimeZone2" ColumnName="WorkTimeZone2" />
+                <ScalarProperty Name="WorkTimeZone1" ColumnName="WorkTimeZone1" />
+                <ScalarProperty Name="IndexZone4" ColumnName="IndexZone4" />
+                <ScalarProperty Name="IndexZone3" ColumnName="IndexZone3" />
+                <ScalarProperty Name="IndexZone2" ColumnName="IndexZone2" />
+                <ScalarProperty Name="IndexZone1" ColumnName="IndexZone1" />
+                <ScalarProperty Name="Config" ColumnName="Config" />
+                <ScalarProperty Name="OutCommand2" ColumnName="OutCommand2" />
+                <ScalarProperty Name="OutDuration2" ColumnName="OutDuration2" />
+                <ScalarProperty Name="OutKeyID2" ColumnName="OutKeyID2" />
+                <ScalarProperty Name="InCommand2" ColumnName="InCommand2" />
+                <ScalarProperty Name="InDuration2" ColumnName="InDuration2" />
+                <ScalarProperty Name="InKeyID2" ColumnName="InKeyID2" />
+                <ScalarProperty Name="OutCommand" ColumnName="OutCommand" />
+                <ScalarProperty Name="OutDuration" ColumnName="OutDuration" />
+                <ScalarProperty Name="OutKeyID" ColumnName="OutKeyID" />
+                <ScalarProperty Name="InCommand" ColumnName="InCommand" />
+                <ScalarProperty Name="InDuration" ColumnName="InDuration" />
+                <ScalarProperty Name="InKeyID" ColumnName="InKeyID" />
+                <ScalarProperty Name="Gtype" ColumnName="Gtype" />
+                <ScalarProperty Name="GIndex" ColumnName="GIndex" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ComputerID" ColumnName="ComputerID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

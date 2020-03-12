@@ -36,6 +36,8 @@ namespace OrionApp
                     var names = from pList in orion2019Entities.pList
                                 from pDivision in orion2019Entities.PDivision
                                 from pLogData in orion2019Entities.pLogData
+                                from AcessPoint in orion2019Entities.AcessPoint
+                                let point = AcessPoint.Name
                                 where pDivision.ID == pList.Section && pDivision.Name == orgComboBox.Text &&
                                       pLogData.HozOrgan == pList.ID
                                       && pLogData.DeviceTime > dateTimePicker1.Value &&
@@ -44,6 +46,7 @@ namespace OrionApp
                                       item.ToString()
                                       && (pLogData.ZoneIndex == 0 || pLogData.ZoneIndex == 1)
                                       && pLogData.Event == 32
+                                      && pLogData.DoorIndex == AcessPoint.ID
                                 orderby pLogData.DeviceTime
                                 select new
                                 {
@@ -52,9 +55,12 @@ namespace OrionApp
                                     pList.FirstName,
                                     pList.ID,
                                     pLogData.DeviceTime,
-                                    pLogData.ZoneIndex
+                                    pLogData.ZoneIndex,
+                                    pLogData.Remark,
+                                    point
+                                    
                                 };
-                    dataGridView1.ColumnCount = 6;
+                    dataGridView1.ColumnCount = 7;
                     //dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                     var rows = new List<DataGridViewRow>();
 
@@ -67,8 +73,9 @@ namespace OrionApp
                         row.Cells[1].Value = name.FirstName;
                         row.Cells[2].Value = name.MidName;
                         row.Cells[3].Value = Convert.ToDateTime(name.DeviceTime).ToString("dd.MM.yyyy");
-                        row.Cells[4].Value = Convert.ToDateTime(name.DeviceTime).ToString("hh:mm:ss");
+                        row.Cells[4].Value = Convert.ToDateTime(name.DeviceTime).ToString("HH:mm:ss");
                         row.Cells[5].Value = a;
+                        row.Cells[6].Value = name.point;
 
                         rows.Add(row);
                         toolStripStatusLabel1.Text = "Получаем данные по сотруднику: " + name.Name + " " +
@@ -136,9 +143,25 @@ namespace OrionApp
             border = cell.Borders;
             border.LineStyle = XlLineStyle.xlContinuous;
             border.Weight = 2d;
-            workSheet.Cells[1, 5] = "Событие";
+            workSheet.Cells[1, 5] = "Время";
             range = workSheet.UsedRange;
             cell = range.Cells[1, 5];
+            cell.Interior.Color = color1;
+            cell.Font.Color = color2;
+            border = cell.Borders;
+            border.LineStyle = XlLineStyle.xlContinuous;
+            border.Weight = 2d;
+            workSheet.Cells[1, 6] = "Событие";
+            range = workSheet.UsedRange;
+            cell = range.Cells[1, 6];
+            cell.Interior.Color = color1;
+            cell.Font.Color = color2;
+            border = cell.Borders;
+            border.LineStyle = XlLineStyle.xlContinuous;
+            border.Weight = 2d;
+            workSheet.Cells[1, 7] = "Точка прохода";
+            range = workSheet.UsedRange;
+            cell = range.Cells[1, 7];
             cell.Interior.Color = color1;
             cell.Font.Color = color2;
             border = cell.Borders;
@@ -175,6 +198,18 @@ namespace OrionApp
                     workSheet.Cells[rowExcel, "E"] = dataGridView1.Rows[i].Cells[4].Value;
                     range = workSheet.UsedRange;
                     cell = range.Cells[rowExcel, "E"];
+                    border = cell.Borders;
+                    border.LineStyle = XlLineStyle.xlContinuous;
+                    border.Weight = 2d;
+                    workSheet.Cells[rowExcel, "F"] = dataGridView1.Rows[i].Cells[5].Value;
+                    range = workSheet.UsedRange;
+                    cell = range.Cells[rowExcel, "F"];
+                    border = cell.Borders;
+                    border.LineStyle = XlLineStyle.xlContinuous;
+                    border.Weight = 2d;
+                    workSheet.Cells[rowExcel, "G"] = dataGridView1.Rows[i].Cells[6].Value;
+                    range = workSheet.UsedRange;
+                    cell = range.Cells[rowExcel, "G"];
                     border = cell.Borders;
                     border.LineStyle = XlLineStyle.xlContinuous;
                     border.Weight = 2d;
@@ -253,6 +288,7 @@ namespace OrionApp
 
                 foreach (var name in names) comboBox1.Items.Add(name);
             }
+            Text = Text + " версия " + Application.ProductVersion;
         }
 
         private void orgComboBox_SelectedIndexChanged(object sender, EventArgs e)

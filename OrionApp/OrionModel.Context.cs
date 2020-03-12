@@ -29,5 +29,6 @@ namespace OrionApp
         public virtual DbSet<pList> pList { get; set; }
         public virtual DbSet<pLogData> pLogData { get; set; }
         public virtual DbSet<PCompany> PCompany { get; set; }
+        public virtual DbSet<AcessPoint> AcessPoint { get; set; }
     }
 }
