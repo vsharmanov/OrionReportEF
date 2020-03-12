@@ -101,8 +101,14 @@ namespace OrionApp
             pictureBox1.Image.Save(folderBrowserDialog1.SelectedPath + "\\" + comboBox2.Text + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
         }
 
-        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
+        
+
+        private void button2_Click(object sender, EventArgs e)
         {
+            if (pictureBox1.Image != null)
+            {
+                Clipboard.SetImage(pictureBox1.Image);
+            }
         }
     }
 }

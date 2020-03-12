@@ -54,7 +54,7 @@ namespace OrionApp
                                     pLogData.DeviceTime,
                                     pLogData.ZoneIndex
                                 };
-                    dataGridView1.ColumnCount = 5;
+                    dataGridView1.ColumnCount = 6;
                     //dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                     var rows = new List<DataGridViewRow>();
 
@@ -66,8 +66,10 @@ namespace OrionApp
                         row.Cells[0].Value = name.Name;
                         row.Cells[1].Value = name.FirstName;
                         row.Cells[2].Value = name.MidName;
-                        row.Cells[3].Value = name.DeviceTime;
-                        row.Cells[4].Value = a;
+                        row.Cells[3].Value = Convert.ToDateTime(name.DeviceTime).ToString("dd.MM.yyyy");
+                        row.Cells[4].Value = Convert.ToDateTime(name.DeviceTime).ToString("hh:mm:ss");
+                        row.Cells[5].Value = a;
+
                         rows.Add(row);
                         toolStripStatusLabel1.Text = "Получаем данные по сотруднику: " + name.Name + " " +
                                                      name.FirstName + " " + name.MidName;

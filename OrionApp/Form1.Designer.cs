@@ -38,6 +38,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,24 +111,39 @@
             // button1
             // 
             this.button1.Image = global::OrionApp.Properties.Resources.Save_icon;
-            this.button1.Location = new System.Drawing.Point(134, 505);
+            this.button1.Location = new System.Drawing.Point(282, 505);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 40);
             this.button1.TabIndex = 24;
-            this.button1.Text = "Сохранить фотографию";
+            this.button1.Text = "Сохранить в файл";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // folderBrowserDialog1
             // 
-            this.folderBrowserDialog1.HelpRequest += new System.EventHandler(this.folderBrowserDialog1_HelpRequest);
+
+            // 
+            // button2
+            // 
+            this.button2.Image = global::OrionApp.Properties.Resources.Actions_edit_copy_icon;
+            this.button2.Location = new System.Drawing.Point(136, 505);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(140, 40);
+            this.button2.TabIndex = 26;
+            this.button2.Text = "Скопировать в буфер";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // photoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(436, 549);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
@@ -162,5 +178,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Button button2;
     }
 }

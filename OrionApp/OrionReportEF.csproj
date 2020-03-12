@@ -181,6 +181,9 @@
       <DependentUpon>OrionModel.edmx</DependentUpon>
       <LastGenOutput>OrionModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Actions-edit-copy-icon.png" />
+    <None Include="Resources\copy.png" />
+    <None Include="Resources\copy-icon.png" />
     <None Include="Resources\Save-icon.png" />
     <None Include="Resources\person-icon.png" />
     <None Include="Resources\Folders-OS-User-No-Frame-Metro-icon.png" />
